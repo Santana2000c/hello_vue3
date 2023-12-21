@@ -29,7 +29,7 @@
         function showTel(){
             alert(tel)
         }
-        return ()=>'哈哈'
+        return {name,age,changeName,changeAge,showTel}
     }
   }
 </script>

@@ -2,6 +2,11 @@
     <div class="person">
         <h1>一辆{{car.brand}},价值{{car.price}}</h1>
         <button @click="change">修改价格</button>
+        <br>
+        <h2>游戏列表：</h2>
+        <ul>
+            <li v-for="game in games" :key="game.id" >{{game.name}}</li>
+        </ul>
     </div>
 </template>
 
@@ -9,6 +14,11 @@
     import {reactive} from 'vue'
 
     let car = reactive({brand:'奔驰',price:100})
+    let games = [
+        {id:'u01',name:'原神01'},
+        {id:'u02',name:'原神02'},
+        {id:'u03',name:'原神03'}
+    ]
 
     function change(){
         car.price += 10
