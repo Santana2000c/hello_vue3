@@ -1,28 +1,61 @@
 <template>
+<!-- watch监听reactive 对象数据类型数据 -->
     <div class="person">
-        <h1>一辆{{car.brand}},价值{{car.price}}</h1>
-        <button @click="change">修改价格</button>
-        <br>
-        <h2>游戏列表：</h2>
-        <ul>
-            <li v-for="game in games" :key="game.id" >{{game.name}}</li>
-        </ul>
+        <h2>姓名:{{person.name}}</h2>
+        <h2>年龄:{{person.age}}</h2>
+        <h2>车1:{{person.car.c1}}</h2>
+        <h2>车2:{{person.car.c2}}</h2>
+        <button @click="changName">改名字</button>
+        <button @click="changAge">改年龄</button>
+        <button @click="changC1">改车1</button>
+        <button @click="changC2">改车2</button>
+        <button @click="changCar">改车</button>
+        
     </div>
 </template>
 
 <script lang="ts" setup name="Person">
-    import {reactive} from 'vue'
+import { reactive, ref,watch} from "vue";
 
-    let car = reactive({brand:'奔驰',price:100})
-    let games = [
-        {id:'u01',name:'原神01'},
-        {id:'u02',name:'原神02'},
-        {id:'u03',name:'原神03'}
-    ]
+    let person = reactive({
+        name:'张三',
+        age:18,
+        car:{
+            c1:'宝马',
+            c2:'奥迪'
+        }
+    })
+    
 
-    function change(){
-        car.price += 10
-    }
+function changName (){
+    person.name += '~'
+}
+function changAge (){
+    person.age += 1
+}
+function changC1 (){
+    person.car.c1='大众'
+}
+function changC2 (){
+    person.car.c2='雅阁'
+}
+function changCar (){
+    person.car={c1:'雅迪',c2:'小鸟'}
+}
+//属性值不是对象类型是，需要写成函数形式，用于监视响应式对象的某个属性
+// watch(()=> person.name,(newval,oldVal)=>{
+//     console.log('属性发生了变化',newval,oldVal)
+// })
+
+//最佳实践，监视对象里属性第一个值最好写成函数式，要关注细枝末节开启deep深度模式
+// watch(()=>person.car,(newval,oldVal)=>{
+//     console.log('属性发生了变化',newval,oldVal)
+// },{deep:true})
+
+//监听数组
+watch([()=>person.name,()=>person.car.c1],(newval,oldVal)=>{
+    console.log('属性发生了变化',newval,oldVal)
+},{deep:true})
 </script>
 
 <style scoped>
