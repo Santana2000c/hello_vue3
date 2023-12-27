@@ -23,7 +23,16 @@ const router = createRouter({
         path:'/news',
         component:News,
         children:[
-            {path:'detail',component:Detail}
+        {   path:'detail/:id/:title/:content',
+            name:'xiangxi',
+            component:Detail,
+            // 第一种写法，路由收到的所有params参作为props传给路由组件
+            //props:true
+            // 第二种 函数式
+            props(route){
+                return route.query
+            }
+        }
         ]
        }
     ]
