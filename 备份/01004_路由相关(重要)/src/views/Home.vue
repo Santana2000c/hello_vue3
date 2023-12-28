@@ -6,13 +6,15 @@
 
 <script lang="ts" setup name="Homes">
     import {onMounted,onUnmounted} from 'vue'
+    import {useRouter} from 'vue-router'
+    const router = useRouter()
 
     onMounted(()=>{
-    console.log('home已被挂载')
+        setTimeout(()=>{
+            router.push('/news')
+        },5000)
     })
-    onUnmounted(()=>{
-    console.log('home卸载了')
-    })
+  
 </script>
 
 

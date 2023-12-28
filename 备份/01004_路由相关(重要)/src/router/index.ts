@@ -14,7 +14,7 @@ const router = createRouter({
     history:createWebHistory(),
     routes:[
        {
-        path:'/',
+        path:'/home',
         component:Home
        },{
         path:'/about',
@@ -27,13 +27,16 @@ const router = createRouter({
             name:'xiangxi',
             component:Detail,
             // 第一种写法，路由收到的所有params参作为props传给路由组件
-            //props:true
+            props:true
             // 第二种 函数式
-            props(route){
-                return route.query
-            }
+            // props(route){
+            //     return route.query
+            // }
         }
         ]
+       },{
+        path:'/',
+        redirect:'/home'
        }
     ]
 })
