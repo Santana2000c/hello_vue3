@@ -1,12 +1,11 @@
 <template>
   <div class="category">
-    <h2>{{title}}</h2>
-    <slot>默认内容</slot>
+    <slot name="s1">默认内容1</slot>
+    <slot name="s2">默认内容2</slot>
   </div>
 </template>
 
 <script setup lang="ts" name="Category">
-  defineProps(['title'])
 </script>
 
 <style scoped>

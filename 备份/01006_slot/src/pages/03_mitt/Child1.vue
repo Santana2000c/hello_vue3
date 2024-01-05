@@ -2,7 +2,7 @@
   <div class="child1">
     <h3>子组件1</h3>
 		<h4>玩具：{{ toy }}</h4>
-		<button @click="emitter.emit('send-toy',toy)">玩具给弟弟</button>
+		<button @click="emitter.emit('send-toy',toy)"> 发送</button>
   </div>
 </template>
 

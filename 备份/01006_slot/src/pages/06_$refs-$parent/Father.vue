@@ -2,7 +2,7 @@
 	<div class="father">
 		<h3>父组件</h3>
 		<h4>房产：{{ house }}</h4>
-		<button @click="changeToy">修改Child1的玩具</button>
+		<button @click="changToy">修改Child1的玩具</button>
 		<button @click="changeComputer">修改Child2的电脑</button>
 		<button @click="getAllChild($refs)">让所有孩子的书变多</button>
 		<Child1 ref="c1"/>
@@ -34,8 +34,10 @@
 	// 数据
 	let house = ref(4)
 	// 方法
-	function changeToy(){
-		c1.value.toy = '小猪佩奇'
+	function changToy(){
+		c1.value.toy='哥斯拉'
+		console.log(c1.value)
+		console.log(c1.value.toy)
 	}
 	function changeComputer(){
 		c2.value.computer = '华为'
